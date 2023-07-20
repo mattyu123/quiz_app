@@ -7,8 +7,8 @@ These are the sample quizzes that will already be available for a user to comple
 **Question 1: What is the capital of Japan?**
 A. Tokyo
 B. Osaka
-C. Fiji
-D. Okinawa
+C. Sapporo
+D. Kyoto
 Answer: A - Tokyo 
 
 **Question 2: What is the capital of the United States?**
