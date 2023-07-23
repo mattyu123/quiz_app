@@ -41,7 +41,7 @@ const createQuiz = require('./routes/createQuiz')
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
-// app.use('/create', createQuiz)
+app.use('/quiz', createQuiz)
 // Note: mount other resources here, using the same pattern above
 
 // Home page
