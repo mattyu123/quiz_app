@@ -9,3 +9,4 @@ INSERT INTO questions (quiz_id, question, option_1, option_2, option_3, option_4
 VALUES (1, 'What is the capital of Japan?', 'Tokyo', 'Osaka','Sapporo','Kyoto'),
 (1, 'What is the capital of the United States?','Washington DC', 'New York','Los Angeles','Portland'),
 (1, 'What is the capital of France?', 'Paris', 'Lille', 'Marseille', 'Lyon');
+
