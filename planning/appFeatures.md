@@ -11,10 +11,9 @@
 - Select Quiz - (/:id)
 - Submit quiz - (/:id/:id)
   - Second id is the unique URL that they can use to share with thier friends 
-- User's page (private quizzes) - (/users/:id)
 - Results page - (/quiz/:id)
   - The id is the unique URL that they can use to share with their friends 
-
+- User's page (private quizzes) - (/users/:id)
 
 Features
 **Create Quizzes**
