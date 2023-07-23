@@ -36,12 +36,19 @@ const getQuizzesByUserId = (id) => {
   return (
     db
       .query(queryText,values) //query pass to cb function
-      .then((res) =>)
+      .then((res) => {
+        const quiz_id = res.rows[0].id;
+        return quiz_id;
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   );
  }
 
 module.exports = {
   getPublicQuizzes,
   getQuizzesByUserId, 
-  getQuestionsByQuizId 
+  getQuestionsByQuizId,
+  submitQuiz
 };
