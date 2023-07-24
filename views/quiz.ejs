@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/createQuiz.css"/>
+</head>
+<body>
+  <h1><%= quiz.title %></h1>
+  <form method="post" action="/quiz/<%= quiz.id %>">
+    <% questions.forEach((question) => { %>
+      <h2><%= question.question_text %></h2>
+      <% question.answers.forEach((answer) => { %>
+        <label>
+          <input type="radio" name="question<%= question.id %>" value="<%= answer.id %>">
+          <%= answer.answer_text %>
+        </label>
+      <% }); %>
+    <% }); %>
+    <input type="submit" value="Submit">
+  </form>
+  <p>Share this quiz with your friends:</p>
+  <input type="text" value="<%= shareURL %>" id="shareURL" readonly>
+  <button onclick="copyURL()">Copy URL</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+  <script>
+    function copyURL() {
+      var copyText = document.getElementById("shareURL");
+      copyText.select();
+      document.execCommand("copy");
+      alert("URL copied to clipboard!");
+    }
+  </script>
+</body>
+</html>
