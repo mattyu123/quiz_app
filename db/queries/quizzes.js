@@ -45,10 +45,31 @@ const getQuizzesByUserId = (id) => {
       })
   );
  }
-
+ 
+ const submitQuestion = (quiz_id, option_1, option_2, option_3, option_4, question) => {
+    const queryText = "INSERT INTO questions(quiz_id, option_1,option_2, option_3, option_4, question) VALUES ($1,$2,$3,$4,$5,$6) RETURNING id, quiz_id";
+    
+   const question_id = [option_1,option_2,option_3,option_4];
+   for (let questionId in question_id) {
+    const values = [quiz_id, questionId,question];
+    return (
+      db
+        .query(queryText,values) //query pass to cb function
+        .then((res) => {
+          const {id: questionId, quiz_id} = res.rows[0];
+          return {questionId, quiz_id};
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    )
+   }
+    
+ }
 module.exports = {
   getPublicQuizzes,
   getQuizzesByUserId, 
   getQuestionsByQuizId,
-  submitQuiz
+  submitQuiz,
+  submitQuestion,
 };
