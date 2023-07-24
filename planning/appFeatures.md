@@ -36,6 +36,7 @@ POST /newQuiz
 **User Experience:** A unique URL is created when a quiz is created, 
 
 Dev Responsibility: Make sure that a random URL is generated, make sure that it links back to the results page/quiz 
+- Worku also responsible for building out user private page with private quizzes
 - Worku
 
 Flow:

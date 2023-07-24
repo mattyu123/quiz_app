@@ -2,6 +2,9 @@
 
 These are the sample quizzes that will already be available for a user to complete 
 
+NOTE: OPTION 1 IN THE DATABASE IS ALWAYS RIGHT ANSWER
+- On UI, we can randomize the order the options appear in to the user 
+
 ## Quiz 1 - Countries and Capitals (Public Quiz)
 
 **Question 1: What is the capital of Japan?**
@@ -27,7 +30,7 @@ Answer: A - Paris
 
 ## Quiz 2 - Video Games (Private Quiz)
 
-**Question 1: What is the name of the Italian plumber whose favourite mode of transportation is by pipe and loves to eat mushrooms. He has a brother named Luigi.**
+**Question 1: What is the name of the Italian plumber whose favourite mode of transportation is by pipe and loves to eat mushrooms.**
 A. Mario
 B. Guiseppe
 C. Tony
