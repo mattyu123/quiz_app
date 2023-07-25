@@ -35,3 +35,23 @@ const createQuestionElement = function() {
   );
   return $question;
 }
+
+$(document).ready(function() {
+  $('#add-question').click(function() {
+    event.preventDefault();
+    $('#user-created-questions').append(createQuestionElement())
+
+
+
+    // $.ajax({
+    //   type: POST,
+    //   url: 'views/index.ejs',
+    // })
+    // .then(() => {
+    //   $('user-created-questions').html(createQuestionElement())
+    // })
+    // .catch((error) => {
+    //   alert('Error', error.responseText)
+    // })
+  });
+});
