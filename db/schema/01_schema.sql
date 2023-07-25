@@ -14,6 +14,7 @@ CREATE TABLE quizzes (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   name VARCHAR(255) NOT NULL,
+  description TEXT,
   is_private BOOLEAN,
   url VARCHAR(2048)
 );

@@ -30,11 +30,13 @@
     <h3>Make Your Own Quiz</h3>
     <form id="build-quiz-info">
       <h5>Title of Quiz</h5>
-      <input type="text" class="quiz-title" name="quiz-title">
+      <input type="text" class="quiz-title" name="title">
       <h5>Description of Quiz</h5>
-      <input type="text" class="quiz-description" name="quiz-description">
-      <input type="checkbox" id="public-or-private">
-      <label for="private">Would you like to make the quiz private?</label>
+      <input type="text" class="quiz-description" name="description">
+      <span id="private-checkbox">
+        <input type="checkbox" value="true" id="public-or-private" name="private">
+        <p>Would you like to make the quiz private?</p>
+      </span>
       <button id="create-quiz" type="submit">Create Quiz</button>
     </form>
   </div>

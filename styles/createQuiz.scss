@@ -54,3 +54,15 @@ h5 {
   align-items: center;
   margin: 0.5em;
 }
+
+#build-quiz-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#private-checkbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
