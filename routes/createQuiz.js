@@ -1,43 +1,37 @@
 const express = require('express');
 const router = express.Router();
-const { insertQuiz } = require('../db/queries/quiz.js');
-
+const database  = require('../db/queries/quiz.js');
+// const database = require("../db/connection.js")
 
 //When user clicks on create button, render the entire create quiz page
 router.get('/create', (req, res) => {
   res.render('createQuiz')
 })
 
-//send the quiz data to the server
+//Server receives the request from browser
 router.post('/create', (req, res) => {
+  const body = req.body
+  const newObj = {}
 
+  //turn the string "true" into a boolean before sending it to the database, data stored in newObj
+  for (const item in body) {
+    if(body[item] === "true") {
+      newObj[item] = (body.private === 'true')
+    } else {
+      newObj[item] = body[item]
+    }
+  }
 
-  const newBody = req.body
+  //run the insertQuiz function on the database object
+  database
+    .insertQuiz(newObj)
+    .then(() => {
+    })
+    .catch((error) => {
+      console.log(error)
+    });
 
-  // const empty = {}
-
-  // for (const item in newBody) {
-  //   if (item.private === "true") {
-  //     empty[item.private] = true;
-  //   }
-  //   empty[item] = newBody[item]
-  // }
-
-  const private = (newBody.private === 'true')
-  console.log("HERE", private)
-
-  // const newResults = results.map(item => {
-  //   if (item.value === 'true') {
-  //     item.value = true;
-  //   } else if (item.value === 'false') {
-  //     item.value = false;
-  //   }
-  //   return item;
-  // });
-
-  console.log(typeof newBody.value)
-
-
+  //send back to client that the request was successful
   res.sendStatus(200)
 })
 

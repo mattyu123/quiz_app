@@ -1,5 +1,4 @@
-
-
+// const { Pool } = require("pg");
 
 const createQuestionElement = function() {
   let $question = (
@@ -46,8 +45,6 @@ $('#build-quiz-info').submit(function() {
 
 })
 
-
-
 //When the user clicks on "add quiz question, a new question form will appear for user to add a question"
 $(document).ready(function() {
   $('#add-question').click(function() {
@@ -62,17 +59,6 @@ $(document).ready(function() {
 
     //takes the data that we get from the form
     const results = $(this).serializeArray();
-    console.log("originial", results)
-
-    //turn the "true" string value into a boolean
-    // const newResults = results.map(item => {
-    //   if (item.value === 'true') {
-    //     item.value = true;
-    //   } else if (item.value === 'false') {
-    //     item.value = false;
-    //   }
-    //   return item;
-    // });
 
     $.post(
       '/quiz/create',
