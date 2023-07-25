@@ -64,6 +64,7 @@ $(document).ready(function() {
       '/quiz/create',
       results,
       function(data, status) {
+        window.location.href='/quiz/create/questions'
         console.log(data, status)
       }
     )

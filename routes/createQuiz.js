@@ -22,19 +22,19 @@ router.post('/create', (req, res) => {
     }
   }
 
-  console.log("this is the user inputted info", newObj)
-
   //run the insertQuiz function on the database object
   database
     .insertQuiz(newObj)
     .then(() => {
+      res.send()
     })
     .catch((error) => {
       console.log(error)
     });
 
   //send back to client that the request was successful
-  res.sendStatus(200)
+  // res.redirect('/quiz/create/questions')
+  // res.sendStatus(200)
 })
 
 module.exports = router;

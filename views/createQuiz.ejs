@@ -29,7 +29,7 @@
   <div class="make-quiz-header">
     <h3>Make Your Own Quiz</h3>
     <p>Enter your quizzes name and description. You will add questions on the following page</p>
-    <form id="build-quiz-info">
+    <form id="build-quiz-info" action="/quiz/create" method="POST">
       <h5>Title of Quiz</h5>
       <input type="text" class="quiz-title" name="title">
       <h5>Description of Quiz</h5>
@@ -46,38 +46,4 @@
 
   </section>
 </body>
-
-<!-- <body>
-  <nav id = "navigation-bar">
-    <span>QUIZZLY</span>
-    <span>Your Quizzes</span>
-  </nav>
-  <h1 id="intro-line">
-    Hi Peter!
-  </h1>
-  <div class="make-quiz-header">
-    <h3>Make Your Own Quiz</h3>
-    <h5>Title of Quiz</h5>
-    <form class="quiz-title">
-      <input type="text">
-    </form>
-    <h5>Description of Quiz</h5>
-    <form class="quiz-description">
-      <input type="text">
-    </form>
-    <form id="public-or-private">
-      <input type="checkbox">
-      <label for="private">Would you like to make the quiz private?</label>
-    </form>
-    <form>
-      <button id="add-question" type="submit">Add Quiz Question</button>
-    </form>
-    <form>
-      <button id="submit-quiz" type="submit">Create Quiz</button>
-    </form>
-  </div>
-  <section id="user-created-questions">
-
-  </section>
-</body> -->
 </html>
