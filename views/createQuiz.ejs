@@ -23,22 +23,28 @@
   <div class="make-quiz-header">
     <h3>Make Your Own Quiz</h3>
     <h5>Title of Quiz</h5>
-    <form class="quiz-title">
-      <input type="text">
-    </form>
-    <h5>Description of Quiz</h5>
-    <form class="quiz-description">
-      <input type="text">
-    </form>
-    <form id="public-or-private">
-      <input type="checkbox">
-      <label for="private">Private?</label>
-      <input type="checkbox">
-      <label for="public">Public?</label>
-    </form>
-    <form>
-      <button id="add-question">Add Quiz Question</button>
-    </form>
+    <form action="/quiz/create" method="POST">
+      <div class = "quiz-title">
+       <input type="text" name = "name">
+      </div> 
+ 
+       <h5>Description of Quiz</h5>
+       <div class="quiz-description">
+         <input type="text">
+       </div>
+       <div id="public-or-private">
+         <input type="checkbox" value = "true" name = "private">
+         <label for="private">Would you like to make the quiz private?</label>
+       </div>
+       <div>
+         <!-- <button id="add-question" type="submit">Add Quiz Question</button> -->
+       </div>
+       <div>
+         <button id="submit-quiz" type="submit">Submit Quiz</button>
+       </div>
+     </form>
+   </div>
+   <section id="user-created-questions">
   </div>
   <div class="added-questions">
 
