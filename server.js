@@ -58,10 +58,10 @@ app.use('/quiz', createQuiz)
 app.get('/', (req, res) => {
   res.render('index');
 });
-app.get('login/:user_id', (req, res) => {
-  req.cookies.user_id = req.params.user_id;
-  res.redirect('/home');
-});
+// app.get('login/:user_id', (req, res) => {
+//   req.cookies.user_id = req.params.user_id;
+//   res.redirect('/home');
+// });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

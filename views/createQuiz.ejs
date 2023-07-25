@@ -6,9 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
+  <!--Linking the Stylesheets-->
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
   <link rel="stylesheet" href="/styles/createQuiz.css"/>
+
+  <!--Install external scripts required-->
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+
+  <!--App JS-->
+  <script src="/scripts/createQuiz.js"></script>
 </head>
 
 <body>
@@ -31,16 +38,17 @@
     </form>
     <form id="public-or-private">
       <input type="checkbox">
-      <label for="private">Private?</label>
-      <input type="checkbox">
-      <label for="public">Public?</label>
+      <label for="private">Would you like to make the quiz private?</label>
     </form>
     <form>
-      <button id="add-question">Add Quiz Question</button>
+      <button id="add-question" type="submit">Add Quiz Question</button>
+    </form>
+    <form>
+      <button id="submit-quiz" type="submit">Submit Quiz</button>
     </form>
   </div>
-  <div class="added-questions">
+  <section id="user-created-questions">
 
-  </div>
+  </section>
 </body>
 </html>
