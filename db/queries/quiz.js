@@ -6,7 +6,7 @@ const insertQuiz = function(quiz) {
   //for purposes of this app, we only have 1 user
   const user_id = 1;
   const quizTitle = quiz.title
-  const quizDescription = quiz.quizDescription
+  const quizDescription = quiz.description
   const isPrivate = quiz.private !== undefined ? quiz.private: false
 
   const queryCode =

@@ -22,6 +22,8 @@ router.post('/create', (req, res) => {
     }
   }
 
+  console.log("this is the user inputted info", newObj)
+
   //run the insertQuiz function on the database object
   database
     .insertQuiz(newObj)
