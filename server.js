@@ -43,7 +43,7 @@ const usersRoutes = require('./routes/users');
 const homeRoutes = require('./routes/home');
 const quizRoutes = require('./routes/quizzes');
 //These are the routes that I (Matt Yu) Set up in the file
-// const createQuiz = require('./routes/createQuiz')
+const createQuiz = require('./routes/createQuiz')
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -51,8 +51,7 @@ const quizRoutes = require('./routes/quizzes');
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
-app.use('/quiz', quizRoutes);
-app.use(homeRoutes);
+app.use('/quiz', createQuiz)
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -62,10 +61,10 @@ app.use(homeRoutes);
 app.get('/', (req, res) => {
   res.render('index');
 });
-app.get('login/:user_id', (req, res) => {
-  req.cookies.user_id = req.params.user_id;
-  res.redirect('/home');
-});
+// app.get('login/:user_id', (req, res) => {
+//   req.cookies.user_id = req.params.user_id;
+//   res.redirect('/home');
+// });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

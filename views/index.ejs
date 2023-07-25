@@ -25,15 +25,8 @@
 
     <h1>Welcome Peter</h1>
 
-    <form action="/quiz/create" method="GET">
-      <ul>
-        <% quizzes.forEach((quiz) => { %>
-          <li>
-            <a href="/quiz/<%= quiz.id %>"><%= quiz.title %></a>
-          </li>
-        <% }); %>
-      </ul>
-      <a href="/quiz/create">Create a New Quiz</a>
+    <form method="GET" action="/quiz/create">
+      <button id="create-quiz">Create Your Own Quiz</button>
     </form>
     <div>
       Quiz 1
