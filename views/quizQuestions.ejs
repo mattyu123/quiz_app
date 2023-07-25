@@ -4,8 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+
+  <!--Linking the Stylesheets-->
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/createQuiz.css"/>
+
+  <!--Install external scripts required-->
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+
+  <!--App JS-->
+  <script src="/scripts/createQuiz.js"></script>
 </head>
 <body>
+  <nav id = "navigation-bar">
+    <span>QUIZZLY</span>
+    <span>Your Quizzes</span>
+  </nav>
   <h1>Insert quiz questions here!!</h1>
+
+  <button id="new-question" type="submit">Add Quiz Question</button>
+  <section id="user-created-questions">
+
+  </section>
 </body>
 </html>

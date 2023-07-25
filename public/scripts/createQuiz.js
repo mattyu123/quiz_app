@@ -1,7 +1,5 @@
-// const { Pool } = require("pg");
-
 const createQuestionElement = function() {
-  let $question = (
+  let question = (
     `
     <article class="added-questions">
     <h3>Question</h3>
@@ -38,22 +36,19 @@ const createQuestionElement = function() {
     </div>
   </article>`
   );
-  return $question;
+  return question;
 }
-
-$('#build-quiz-info').submit(function() {
-
-})
 
 //When the user clicks on "add quiz question, a new question form will appear for user to add a question"
 $(document).ready(function() {
-  $('#add-question').click(function() {
+  $('#new-question').click(function() {
     event.preventDefault();
     $('#user-created-questions').append(createQuestionElement())
-    console.log($('#user-created-questions').length)
   });
+})
 
-  //when the user submits the form, then it will create an array with the data required and can be sent to server
+//when the user submits the form, then it will create an array with the data required and can be sent to server
+$(document).ready(function() {
   $('#build-quiz-info').submit(function(event) {
     event.preventDefault();
 

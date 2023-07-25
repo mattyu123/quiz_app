@@ -31,10 +31,6 @@ router.post('/create', (req, res) => {
     .catch((error) => {
       console.log(error)
     });
-
-  //send back to client that the request was successful
-  // res.redirect('/quiz/create/questions')
-  // res.sendStatus(200)
 })
 
 module.exports = router;
