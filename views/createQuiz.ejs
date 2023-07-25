@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
   <link rel="stylesheet" href="/styles/createQuiz.css"/>
+
+  <!--Install external scripts required-->
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 </head>
 
 <body>
@@ -34,10 +37,13 @@
       <label for="private">Would you like to make the quiz private?</label>
     </form>
     <form>
-      <button id="add-question">Add Quiz Question</button>
+      <button id="add-question" type="submit">Add Quiz Question</button>
+    </form>
+    <form>
+      <button id="submit-quiz" type="submit">Submit Quiz</button>
     </form>
   </div>
-  <section class="added-questions">
+  <section id="user-created-questions">
 
   </section>
 </body>
