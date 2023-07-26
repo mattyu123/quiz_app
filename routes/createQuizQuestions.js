@@ -13,22 +13,22 @@ router.post('/questions', (req, res) => {
   console.log("this",req.body)
 
   //THIS CODE BELOW CHANGES OBJECT OF ARRAYS TO ARRAY OF OBJECTS, ADJUST
-  // let questions = [];
+  let questions = [];
 
-  // const length = req.body.question.length;
+  const length = req.body.question.length;
 
-  // for (let i = 0; i < length; i++) {
-  //   let q = {
-  //     'question':req.body['question'][i],
-  //     'option_1':req.body['option-A'][i],
-  //     'option_2':req.body['option-B'][i],
-  //     'option_3':req.body['option-C'][i],
-  //     'option_4':req.body['option-D'][i]
-  //   }
-  //   questions.push(q)
-  // }
+  for (let i = 0; i < length; i++) {
+    let q = {
+      'question':req.body['question'][i],
+      'option_1':req.body['option_1'][i],
+      'option_2':req.body['option_2'][i],
+      'option_3':req.body['option_3'][i],
+      'option_4':req.body['option_4'][i]
+    }
+    questions.push(q)
+  }
 
-  // console.log(questions)
+  console.log(questions)
 })
 
 module.exports = router;
