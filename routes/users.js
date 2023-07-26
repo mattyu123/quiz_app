@@ -8,7 +8,7 @@
 const express = require('express');
 const router  = express.Router();
 
-const quizQueries = require('../db/queries/quizzes');
+//const quizQueries = require('../db/queries/quizzes');
 
 router.get('/', (req, res) => {
   res.render('users');

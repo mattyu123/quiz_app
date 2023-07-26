@@ -28,14 +28,13 @@
     <form method="GET" action="/quiz/create">
       <button id="create-quiz">Create Your Own Quiz</button>
     </form>
-    <div>
-      Quiz 1
-    </div>
-    <div>
-      Quiz 2
-    </div>
-    <div>
-      Quiz 3
-    </div>
+    <% for (let quiz of quizzes) { %>
+      <article>
+       <%= quiz.name %> 
+       <%= quiz.description %> 
+      </article>
+    <% } %>
+    
+    
   </body>
 </html>
