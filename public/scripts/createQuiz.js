@@ -14,7 +14,7 @@ const createQuestionElement = function() {
     <p>Option C: </p>
     <input type="text" name="option_3">
     <p>Option D: </p>
-    <input type="text" name="option_d">
+    <input type="text" name="option_4">
   </form>
   `
   );

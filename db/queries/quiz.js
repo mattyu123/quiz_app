@@ -26,9 +26,28 @@ const insertQuiz = function(quiz) {
     })
   }
 
+//pull the last quiz ID as that would be the quiz that was just submitted
+const pullLastQuizID = function() {
+  const queryCode =
+  `
+  SELECT id
+  FROM quizzes
+  ORDER BY id DESC
+  LIMIT 1;
+  `
+
+  return db
+    .query(queryCode)
+    .then(res => {
+      return res.rows[0];
+    })
+    .catch(err => {
+      console.log("There is an error", err)
+    })
+  }
+
 
 const insertQuestionAnswers = function(questions) {
-
 }
 
-module.exports = { insertQuiz };
+module.exports = { insertQuiz, pullLastQuizID, insertQuestionAnswers };

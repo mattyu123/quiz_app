@@ -4,13 +4,28 @@ const database  = require('../db/queries/quiz.js');
 
 //after the user clicks on the create quiz button, render user so they can add questions
 router.get('/questions', (req, res)=> {
-  res.render('quizQuestions', {quizID: 1})
+  res.render('quizQuestions')
 })
 
 //Set this route so the server has access to the data
 //manipualte the req.body data so that it can send it to the database
 router.post('/questions', (req, res) => {
-  console.log("this",req.body)
+  //get the id of the quiz that was just created
+  database
+    .pullLastQuizID()
+    .then((quizID) => {
+      data = quizID;
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+
+
+  //manipulate the id object so we just get the number
+  console.log(data)
+
+  const id = data.id
+  console.log("Now it's outside and I get just the number", id)
 
   //THIS CODE BELOW CHANGES OBJECT OF ARRAYS TO ARRAY OF OBJECTS, ADJUST
   let questions = [];
