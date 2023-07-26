@@ -20,28 +20,31 @@ router.post('/questions', (req, res) => {
       console.log(error)
     })
 
-
-  //manipulate the id object so we just get the number
-  console.log(data)
-
-  const id = data.id
-  console.log("Now it's outside and I get just the number", id)
+  //pull the id of the most recent quiz that was submitted - DON'T DELETE BELOW 2 LINES
+  // const id = data.id
+  // console.log("Now it's outside and I get just the number", id)
 
   //THIS CODE BELOW CHANGES OBJECT OF ARRAYS TO ARRAY OF OBJECTS, ADJUST
   let questions = [];
 
-  const length = req.body.question.length;
+  // console.log(req.body)
 
-  for (let i = 0; i < length; i++) {
-    let q = {
-      'question':req.body['question'][i],
-      'option_1':req.body['option_1'][i],
-      'option_2':req.body['option_2'][i],
-      'option_3':req.body['option_3'][i],
-      'option_4':req.body['option_4'][i]
+  //if quiz is only 1 question, it needs to be handled differently
+  if (typeof req.body.question === "string"){
+    questions.push(req.body)
+  } else {
+    for (let i = 0; i < length; i++) {
+      let q = {
+        'question':req.body['question'][i],
+        'option_1':req.body['option_1'][i],
+        'option_2':req.body['option_2'][i],
+        'option_3':req.body['option_3'][i],
+        'option_4':req.body['option_4'][i]
+      }
+      questions.push(q)
     }
-    questions.push(q)
   }
+
 
   console.log(questions)
 })
