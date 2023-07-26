@@ -7,4 +7,8 @@ router.get('/questions', (req, res)=> {
   res.render('quizQuestions')
 })
 
+router.post('/questions', (req, res) => {
+  console.log(req.body)
+})
+
 module.exports = router;

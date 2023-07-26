@@ -1,40 +1,20 @@
 const createQuestionElement = function() {
   let question = (
     `
-    <article class="added-questions">
+  <form class="added-questions">
     <h3>Question</h3>
-    <div class="option-box">
-      <p>Question: </p>
-      <form>
-        <input type="text">
-      </form>
-    </div>
-    <div class="option-box">
-      <p>Option A: </p>
-      <form>
-        <input type="text">
-      </form>
-    </div>
+    <input type="text" name="question">
     <strong><p>Note: The right answer MUST be put in option A field</p></strong>
-    <div class="option-box">
-      <p>Option B: </p>
-      <form>
-        <input type="text">
-      </form>
-    </div>
-    <div class="option-box">
-      <p>Option C: </p>
-      <form>
-        <input type="text">
-      </form>
-    </div>
-    <div class="option-box">
-      <p>Option D: </p>
-      <form>
-        <input type="text">
-      </form>
-    </div>
-  </article>`
+    <p>Option A: </p>
+    <input type="text" name="option-A">
+    <p>Option B: </p>
+    <input type="text" name="option-B">
+    <p>Option C: </p>
+    <input type="text" name="option-C">
+    <p>Option D: </p>
+    <input type="text" name="option-D">
+  </form>
+  `
   );
   return question;
 }
@@ -65,3 +45,57 @@ $(document).ready(function() {
     )
   })
 });
+
+//When the user clicks on submit quiz, data array created
+$(document).ready(function() {
+  $('#submit-quiz').click(function(event) {
+    console.log(event)
+    event.preventDefault()
+
+    const results = $('.added-questions').serializeArray();
+    console.log(results)
+
+    $.post(
+      '/quiz/create/questions',
+      results,
+      function(data, status) {
+        console.log(data, status)
+      }
+    )
+  })
+})
+
+
+// $(document).ready(function() {
+//   $('.added-questions').submit(function(event) {
+//     console.log(event)
+//     event.preventDefault()
+
+//     const results = $(this).serializeArray();
+//     console.log(results)
+
+//   })
+// })
+
+
+
+// $(document).ready(function() {
+//   $('#added-questions').submit(function(event) {
+//     event.preventDefault()
+
+//     const results = $(this).serializeArray();
+//     console.log(results)
+
+//   })
+// })
+
+
+// $(document).ready(function() {
+//   $('#user-created-questions').on("submit", function(event) {
+//     event.preventDefault();
+
+//     const results = $(this).serialize();
+
+//     console.log(results)
+//   })
+// })
