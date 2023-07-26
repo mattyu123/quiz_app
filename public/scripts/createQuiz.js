@@ -1,4 +1,6 @@
 const createQuestionElement = function() {
+  // quizID = $("#submit-quiz").attr("data-quizID")
+
   let question = (
     `
   <form class="added-questions">
@@ -6,13 +8,13 @@ const createQuestionElement = function() {
     <input type="text" name="question">
     <strong><p>Note: The right answer MUST be put in option A field</p></strong>
     <p>Option A: </p>
-    <input type="text" name="option-A">
+    <input type="text" name="option_1">
     <p>Option B: </p>
-    <input type="text" name="option-B">
+    <input type="text" name="option_2">
     <p>Option C: </p>
-    <input type="text" name="option-C">
+    <input type="text" name="option_3">
     <p>Option D: </p>
-    <input type="text" name="option-D">
+    <input type="text" name="option_d">
   </form>
   `
   );
@@ -46,7 +48,7 @@ $(document).ready(function() {
   })
 });
 
-//When the user clicks on submit quiz, data array created
+//When the user clicks on submit quiz, data array created with the questions and answers they added
 $(document).ready(function() {
   $('#submit-quiz').click(function(event) {
     console.log(event)
@@ -64,38 +66,3 @@ $(document).ready(function() {
     )
   })
 })
-
-
-// $(document).ready(function() {
-//   $('.added-questions').submit(function(event) {
-//     console.log(event)
-//     event.preventDefault()
-
-//     const results = $(this).serializeArray();
-//     console.log(results)
-
-//   })
-// })
-
-
-
-// $(document).ready(function() {
-//   $('#added-questions').submit(function(event) {
-//     event.preventDefault()
-
-//     const results = $(this).serializeArray();
-//     console.log(results)
-
-//   })
-// })
-
-
-// $(document).ready(function() {
-//   $('#user-created-questions').on("submit", function(event) {
-//     event.preventDefault();
-
-//     const results = $(this).serialize();
-
-//     console.log(results)
-//   })
-// })

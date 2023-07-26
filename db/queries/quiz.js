@@ -26,4 +26,9 @@ const insertQuiz = function(quiz) {
     })
   }
 
+
+const insertQuestionAnswers = function(questions) {
+
+}
+
 module.exports = { insertQuiz };
