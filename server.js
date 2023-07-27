@@ -7,7 +7,7 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const cookieSession = require('cookie-session');
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8081;
 const app = express();
 
 app.set('views', path.join(__dirname, 'views'));
@@ -61,10 +61,10 @@ app.use('/quizzes',quizRoutes);
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-app.get('/', (req, res) => {
-  res.render('index');
-});
-// app.get('login/:user_id', (req, res) => {
+// app.get('/', (req, res) => {
+//   res.render('index');
+// });
+// // app.get('login/:user_id', (req, res) => {
 //   req.cookies.user_id = req.params.user_id;
 //   res.redirect('/home');
 // });

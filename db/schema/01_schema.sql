@@ -13,12 +13,8 @@ CREATE TABLE users (
 CREATE TABLE quizzes (
   id SERIAL PRIMARY KEY NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-<<<<<<< HEAD
-  name VARCHAR(255) ,
-=======
   name VARCHAR(255) NOT NULL,
   description TEXT,
->>>>>>> 217aac194814b7c3c15c6d3169406c4cef2eeba2
   is_private BOOLEAN,
   url VARCHAR(2048)
 );

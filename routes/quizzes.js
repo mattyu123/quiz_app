@@ -5,7 +5,7 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 
 
 const db = require('../db/connection');
@@ -14,13 +14,13 @@ router.get('/create', (req, res) => {
   res.render('createQuiz')
 })
 
-router.get('/:id', (req,res) => {
-  const userId =  req.params.id;
+router.get('/:id', (req, res) => {
+  const userId = req.params.id;
   res.cookie("userId", userId);
 
   db.getQuizzesByUserId(userId)
     .then((quizzes) => {
-      const templateVars = {quizzes}
+      const templateVars = { quizzes }
       res.render('index', templateVars);
     })
     .catch((err) => {
@@ -43,10 +43,10 @@ router.get('/', (req, res) => {
 // Generating unique URls for quizzes
 
 router.post('/create', (req, res) => {
-  const { name, private = "true" } = req.body;
-  // const quizId = Math.floor(Math.random() * 100) + 1; // Generate a unique quiz ID
-  console.log(req.body);
-  db.query('INSERT INTO quizzes (name, is_private) VALUES ($1, $2)', [ name, private])
+  console.log('hello');
+  console.log('this', req.body);
+  const { name, private = "true",description } = req.body;
+  db.query(`INSERT INTO quizzes (name, is_private,description) VALUES ($1, $2, $3)`, [name, private, description])
     .then(() => {
       // Quiz creation succeeded, redirect to the home page or the newly created quiz page
       res.redirect('/');
@@ -56,6 +56,7 @@ router.post('/create', (req, res) => {
       res.status(500).send('Server Error');
     });
 });
+
 // Share URLs with freinds
 router.get('/quiz/:id', (req, res) => {
   const quizId = req.params.id;
