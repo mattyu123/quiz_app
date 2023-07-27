@@ -6,9 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 
+  <!--Linking the Stylesheets-->
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
   <link rel="stylesheet" href="/styles/createQuiz.css"/>
+
+  <!--Install external scripts required-->
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+
+  <!--App JS-->
+  <script src="/scripts/createQuiz.js"></script>
 </head>
 
 <body>
@@ -21,26 +28,18 @@
   </h1>
   <div class="make-quiz-header">
     <h3>Make Your Own Quiz</h3>
-    <h5>Title of Quiz</h5>
-    <form class="quiz-title">
-      <input type="text">
+    <p>Enter your quizzes name and description. You will add questions on the following page</p>
+    <form id="build-quiz-info" action="/quiz/create" method="POST">
+      <h5>Title of Quiz</h5>
+      <input type="text" class="quiz-title" name="title">
+      <h5>Description of Quiz</h5>
+      <input type="text" class="quiz-description" name="description">
+      <span id="private-checkbox">
+        <input type="checkbox" value="true" id="public-or-private" name="private">
+        <p>Would you like to make the quiz private?</p>
+      </span>
+      <button id="create-quiz" type="submit">Create Quiz</button>
     </form>
-    <h5>Description of Quiz</h5>
-    <form class="quiz-description">
-      <input type="text">
-    </form>
-    <form id="public-or-private">
-      <input type="checkbox">
-      <label for="private">Private?</label>
-      <input type="checkbox">
-      <label for="public">Public?</label>
-    </form>
-    <form>
-      <button id="add-question">Add Quiz Question</button>
-    </form>
-  </div>
-  <div class="added-questions">
-
   </div>
 </body>
 </html>

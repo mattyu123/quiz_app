@@ -44,14 +44,22 @@ const usersRoutes = require("./routes/users");
 
 //These are the routes that I (Matt Yu) Set up in the file
 const createQuiz = require("./routes/createQuiz");
+// const userApiRoutes = require('./routes/users-api');
+// const widgetApiRoutes = require('./routes/widgets-api');
+// const usersRoutes = require('./routes/users');
+
+//Project added routes
+//const createQuiz = require('./routes/createQuiz')
+const createQuizQuestions = require('./routes/createQuizQuestions')
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
-app.use("/api/users", userApiRoutes);
-app.use("/api/widgets", widgetApiRoutes);
-app.use("/users", usersRoutes);
-app.use("/quiz", createQuiz);
+// app.use('/api/users', userApiRoutes);
+// app.use('/api/widgets', widgetApiRoutes);
+// app.use('/users', usersRoutes);
+app.use('/quiz', createQuiz);
+app.use('/quiz/create', createQuizQuestions);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -79,6 +87,9 @@ app.get("/", (req, res) => {
 //   req.cookies.user_id = req.params.user_id;
 //   res.redirect('/home');
 // });
+app.get('/', (req, res) => {
+  res.render('index');
+});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
