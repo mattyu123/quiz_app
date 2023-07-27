@@ -21,13 +21,10 @@ router.post('/questions', (req, res) => {
       //questions into array to be inserted into questions table
       let questions = [];
 
-      console.log("REQ.BODY HERE",req.body)
-
       //if the quiz only has 1 question
       if (typeof req.body.question === "string"){
         questions.push(req.body);
       } else {
-        console.log("IT IS COMING INTO THE ELSE STATEMENT")
         for (let i = 0; i < req.body.question.length; i++) {
           let q = {
             'question':req.body['question'][i],
@@ -39,8 +36,6 @@ router.post('/questions', (req, res) => {
           questions.push(q);
         }
       }
-
-      console.log("QUESTIONS ARRAY", questions)
 
       //inserting the questions into the questions datatable
       database

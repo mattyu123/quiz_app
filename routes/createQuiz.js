@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const database  = require('../db/queries/quiz.js');
-// const database = require("../db/connection.js")
 
 //When user clicks on create button, render the entire create quiz page
 router.get('/create', (req, res) => {

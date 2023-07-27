@@ -56,10 +56,6 @@ const insertQuestionAnswers = function(questions, quizID) {
       queryCode += `('${quizID}','${item.question}', '${item.option_1}', '${item.option_2}', '${item.option_3}', '${item.option_4}');`
     }
   } else {
-    console.log("IT IS COMING TO ME")
-    console.log("Questions content", questions)
-    console.log("Questions length:", questions.length)
-
     for (const [index, item] of questions.entries()) {
       if (index === questions.length - 1) {
         queryCode += `('${quizID}','${item.question}', '${item.option_1}', '${item.option_2}', '${item.option_3}', '${item.option_4}');`
@@ -68,8 +64,6 @@ const insertQuestionAnswers = function(questions, quizID) {
       }
     }
   }
-
-  console.log(queryCode)
 
   return db
     .query(queryCode)

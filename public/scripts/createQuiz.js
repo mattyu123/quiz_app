@@ -1,6 +1,4 @@
 const createQuestionElement = function() {
-  // quizID = $("#submit-quiz").attr("data-quizID")
-
   let question = (
     `
   <form class="added-questions">
@@ -21,7 +19,7 @@ const createQuestionElement = function() {
   return question;
 }
 
-//When the user clicks on "add quiz question, a new question form will appear for user to add a question"
+//When the user clicks on "add quiz question", a new question form will appear for user to add a question"
 $(document).ready(function() {
   $('#new-question').click(function() {
     event.preventDefault();
@@ -65,4 +63,4 @@ $(document).ready(function() {
       }
     )
   })
-})
+});
