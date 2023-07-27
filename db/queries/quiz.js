@@ -49,7 +49,7 @@ const pullLastQuizID = function() {
 
 
 const insertQuestionAnswers = function(questions, quizID) {
-  const queryCode = `INSERT INTO questions (quiz_id, question, option_1, option_2, option_3, option_4)
+  let queryCode = `INSERT INTO questions (quiz_id, question, option_1, option_2, option_3, option_4)
   VALUES`
 
   if (questions.length === 1) {

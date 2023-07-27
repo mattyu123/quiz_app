@@ -13,44 +13,43 @@ router.post('/questions', (req, res) => {
   //get the id of the quiz that was just created
   database
     .pullLastQuizID()
-    .then((quizID) => {
-      data = quizID;
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+    .then((resultData) => {
+      data = resultData;
 
-  //pull the id of the most recent quiz that was submitted - DON'T DELETE BELOW 2 LINES
-  const quiz_id = data.id
-  console.log("Now it's outside and I get just the number", quiz_id)
+        //pull the id of the most recent quiz that was submitted
+      const quiz_id = data.id
 
-  let questions = [];
+      let questions = [];
 
-  //if the quiz only has 1 question
-  if (typeof req.body.question === "string"){
-    questions.push(req.body)
-  } else {
-    for (let i = 0; i < length; i++) {
-      let q = {
-        'question':req.body['question'][i],
-        'option_1':req.body['option_1'][i],
-        'option_2':req.body['option_2'][i],
-        'option_3':req.body['option_3'][i],
-        'option_4':req.body['option_4'][i]
+      //if the quiz only has 1 question
+      if (typeof req.body.question === "string"){
+        questions.push(req.body)
+      } else {
+        for (let i = 0; i < length; i++) {
+          let q = {
+            'question':req.body['question'][i],
+            'option_1':req.body['option_1'][i],
+            'option_2':req.body['option_2'][i],
+            'option_3':req.body['option_3'][i],
+            'option_4':req.body['option_4'][i]
+          }
+          questions.push(q)
+        }
       }
-      questions.push(q)
-    }
-  }
 
-  //inserting the questions into the questions datatable
-  database
-    .insertQuestionAnswers(questions, quiz_id)
-    .then(() => {
-      res.send()
+      //inserting the questions into the questions datatable
+      database
+        .insertQuestionAnswers(questions, quiz_id)
+        .then(() => {
+          res.send()
+        })
+        .catch((error) => {
+          console.log(error)
+        });
     })
     .catch((error) => {
       console.log(error)
-    });
+    })
 })
 
 module.exports = router;
