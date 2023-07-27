@@ -21,15 +21,12 @@ router.post('/questions', (req, res) => {
     })
 
   //pull the id of the most recent quiz that was submitted - DON'T DELETE BELOW 2 LINES
-  // const id = data.id
-  // console.log("Now it's outside and I get just the number", id)
+  const quiz_id = data.id
+  console.log("Now it's outside and I get just the number", quiz_id)
 
-  //THIS CODE BELOW CHANGES OBJECT OF ARRAYS TO ARRAY OF OBJECTS, ADJUST
   let questions = [];
 
-  // console.log(req.body)
-
-  //if quiz is only 1 question, it needs to be handled differently
+  //if the quiz only has 1 question
   if (typeof req.body.question === "string"){
     questions.push(req.body)
   } else {
@@ -45,8 +42,15 @@ router.post('/questions', (req, res) => {
     }
   }
 
-
-  console.log(questions)
+  //inserting the questions into the questions datatable
+  database
+    .insertQuestionAnswers(questions, quiz_id)
+    .then(() => {
+      res.send()
+    })
+    .catch((error) => {
+      console.log(error)
+    });
 })
 
 module.exports = router;

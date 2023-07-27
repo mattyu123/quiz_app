@@ -1,3 +1,4 @@
+const { query } = require('express');
 const db = require('../connection');
 const { Pool } = require('pg');
 
@@ -47,7 +48,32 @@ const pullLastQuizID = function() {
   }
 
 
-const insertQuestionAnswers = function(questions) {
+const insertQuestionAnswers = function(questions, quizID) {
+  const queryCode = `INSERT INTO questions (quiz_id, question, option_1, option_2, option_3, option_4)
+  VALUES`
+
+  if (questions.length === 1) {
+    for (const item of questions) {
+      queryCode += `('${quizID}','${item.question}', '${item.option_1}', '${item.option_2}', '${item.option_3}', '${item.option_4}');`
+    }
+  } else {
+    for (const [index, item] of questions.entries()) {
+      if (index === questions.length - 1) {
+        queryCode += `('${quiz_id}','${item.question}', '${item.option_1}', '${item.option_2}', '${item.option_3}', '${item.option_4}');`
+      } else {
+        queryCode += `('${quiz_id}','${item.question}', '${item.option_1}', '${item.option_2}', '${item.option_3}', '${item.option_4}'),`
+      }
+    }
+  }
+
+  return db
+    .query(queryCode)
+    .then(res => {
+      return res.rows[0];
+    })
+    .catch(err => {
+      console.log("There is an error", err)
+    })
 }
 
 module.exports = { insertQuiz, pullLastQuizID, insertQuestionAnswers };
