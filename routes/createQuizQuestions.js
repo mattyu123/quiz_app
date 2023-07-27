@@ -8,7 +8,6 @@ router.get('/questions', (req, res)=> {
 })
 
 //Set this route so the server has access to the data
-//manipualte the req.body data so that it can send it to the database
 router.post('/questions', (req, res) => {
   //get the id of the quiz that was just created
   database
@@ -16,16 +15,20 @@ router.post('/questions', (req, res) => {
     .then((resultData) => {
       data = resultData;
 
-        //pull the id of the most recent quiz that was submitted
+      //pull the id of the quiz that was just created
       const quiz_id = data.id
 
+      //questions into array to be inserted into questions table
       let questions = [];
+
+      console.log("REQ.BODY HERE",req.body)
 
       //if the quiz only has 1 question
       if (typeof req.body.question === "string"){
-        questions.push(req.body)
+        questions.push(req.body);
       } else {
-        for (let i = 0; i < length; i++) {
+        console.log("IT IS COMING INTO THE ELSE STATEMENT")
+        for (let i = 0; i < req.body.question.length; i++) {
           let q = {
             'question':req.body['question'][i],
             'option_1':req.body['option_1'][i],
@@ -33,9 +36,11 @@ router.post('/questions', (req, res) => {
             'option_3':req.body['option_3'][i],
             'option_4':req.body['option_4'][i]
           }
-          questions.push(q)
+          questions.push(q);
         }
       }
+
+      console.log("QUESTIONS ARRAY", questions)
 
       //inserting the questions into the questions datatable
       database

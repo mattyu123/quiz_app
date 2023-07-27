@@ -47,7 +47,6 @@ const pullLastQuizID = function() {
     })
   }
 
-
 const insertQuestionAnswers = function(questions, quizID) {
   let queryCode = `INSERT INTO questions (quiz_id, question, option_1, option_2, option_3, option_4)
   VALUES`
@@ -57,14 +56,20 @@ const insertQuestionAnswers = function(questions, quizID) {
       queryCode += `('${quizID}','${item.question}', '${item.option_1}', '${item.option_2}', '${item.option_3}', '${item.option_4}');`
     }
   } else {
+    console.log("IT IS COMING TO ME")
+    console.log("Questions content", questions)
+    console.log("Questions length:", questions.length)
+
     for (const [index, item] of questions.entries()) {
       if (index === questions.length - 1) {
-        queryCode += `('${quiz_id}','${item.question}', '${item.option_1}', '${item.option_2}', '${item.option_3}', '${item.option_4}');`
+        queryCode += `('${quizID}','${item.question}', '${item.option_1}', '${item.option_2}', '${item.option_3}', '${item.option_4}');`
       } else {
-        queryCode += `('${quiz_id}','${item.question}', '${item.option_1}', '${item.option_2}', '${item.option_3}', '${item.option_4}'),`
+        queryCode += `('${quizID}','${item.question}', '${item.option_1}', '${item.option_2}', '${item.option_3}', '${item.option_4}'),`
       }
     }
   }
+
+  console.log(queryCode)
 
   return db
     .query(queryCode)
