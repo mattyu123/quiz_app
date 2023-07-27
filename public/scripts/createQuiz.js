@@ -1,57 +1,66 @@
-//function that creates an empty question element for the user to fillout
 const createQuestionElement = function() {
-  let $question = (
+  let question = (
     `
-    <article class="added-questions">
+  <form class="added-questions">
     <h3>Question</h3>
-    <form>
-      <input type="text">
-    </form>
-    <div class="option-box">
-      <p>Option A: </p>
-      <form>
-        <input type="text">
-      </form>
-    </div>
-    <div class="option-box">
-      <p>Option B: </p>
-      <form>
-        <input type="text">
-      </form>
-    </div>
-    <div class="option-box">
-      <p>Option C: </p>
-      <form>
-        <input type="text">
-      </form>
-    </div>
-    <div class="option-box">
-      <p>Option D: </p>
-      <form>
-        <input type="text">
-      </form>
-    </div>
-  </article>`
+    <input type="text" name="question">
+    <strong><p>Note: The right answer MUST be put in option A field</p></strong>
+    <p>Option A: </p>
+    <input type="text" name="option_1">
+    <p>Option B: </p>
+    <input type="text" name="option_2">
+    <p>Option C: </p>
+    <input type="text" name="option_3">
+    <p>Option D: </p>
+    <input type="text" name="option_4">
+  </form>
+  `
   );
-  return $question;
+  return question;
 }
 
+//When the user clicks on "add quiz question", a new question form will appear for user to add a question"
 $(document).ready(function() {
-  $('#add-question').click(function() {
+  $('#new-question').click(function() {
     event.preventDefault();
     $('#user-created-questions').append(createQuestionElement())
-
-
-
-    // $.ajax({
-    //   type: POST,
-    //   url: 'views/index.ejs',
-    // })
-    // .then(() => {
-    //   $('user-created-questions').html(createQuestionElement())
-    // })
-    // .catch((error) => {
-    //   alert('Error', error.responseText)
-    // })
   });
+})
+
+//when the user submits the form, then it will create an array with the data required and can be sent to server
+$(document).ready(function() {
+  $('#build-quiz-info').submit(function(event) {
+    event.preventDefault();
+
+    //takes the data that we get from the form
+    const results = $(this).serializeArray();
+
+    $.post(
+      '/quiz/create',
+      results,
+      function(data, status) {
+        window.location.href='/quiz/create/questions'
+        console.log(data, status)
+      }
+    )
+  })
+});
+
+//When the user clicks on submit quiz, data array created with the questions and answers they added
+$(document).ready(function() {
+  $('#submit-quiz').click(function(event) {
+    console.log(event)
+    event.preventDefault()
+
+    const results = $('.added-questions').serializeArray();
+    console.log(results)
+
+    $.post(
+      '/quiz/create/questions',
+      results,
+      function(data, status) {
+        console.log(data, status)
+      }
+    )
+  })
 });
