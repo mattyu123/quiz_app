@@ -15,3 +15,43 @@ html {
   justify-content: space-between;
   padding: 0.75em;
 }
+
+
+
+.links-container {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 50%;
+
+  .quiz-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .quiz-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    border: 10px solid #FF9900;
+    background-color: whitesmoke;
+    color: #000000;
+    padding: 20px;
+    background-color: #ffffff;
+    text-align: center;
+    width: 300px;
+    min-height: 150px;
+    margin: 10px;
+  }
+  .quiz-link:hover {
+    border: 3px solid #FF9900;
+    background-color: whitesmoke;
+    color: black;
+    box-shadow: 3px 3px grey;
+    a {
+      color: black;
+    }
+  }
+}

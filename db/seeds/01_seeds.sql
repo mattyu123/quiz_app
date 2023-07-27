@@ -6,6 +6,12 @@ INSERT INTO quizzes (user_id, name, description, is_private, url)
 VALUES (1, 'Country Capitals', 'Quiz about various countries and their capital',false, 'placeholder url');
 
 INSERT INTO quizzes (user_id, name, description, is_private, url)
+VALUES (1, 'Country Capitals', 'Quiz about various countries and their capital',false, 'placeholder url');
+
+INSERT INTO quizzes (user_id, name, description, is_private, url)
+VALUES (1, 'Country Capitals', 'Quiz about various countries and their capital',false, 'placeholder url');
+
+INSERT INTO quizzes (user_id, name, description, is_private, url)
 VALUES (1, 'Na', 'Quiz about various countries and their capital', false, 'placeholder url');
 
 
