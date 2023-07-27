@@ -49,11 +49,11 @@ $(document).ready(function() {
 //When the user clicks on submit quiz, data array created with the questions and answers they added
 $(document).ready(function() {
   $('#submit-quiz').click(function(event) {
-    console.log(event)
+    $('#submitted-quiz').slideDown(("slow", () => {}))
     event.preventDefault()
 
     const results = $('.added-questions').serializeArray();
-    console.log(results)
+
 
     $.post(
       '/quiz/create/questions',
