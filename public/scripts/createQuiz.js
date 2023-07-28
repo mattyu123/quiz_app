@@ -1,6 +1,4 @@
 const createQuestionElement = function() {
-  // quizID = $("#submit-quiz").attr("data-quizID")
-
   let question = (
     `
   <form class="added-questions">
@@ -14,14 +12,14 @@ const createQuestionElement = function() {
     <p>Option C: </p>
     <input type="text" name="option_3">
     <p>Option D: </p>
-    <input type="text" name="option_d">
+    <input type="text" name="option_4">
   </form>
   `
   );
   return question;
 }
 
-//When the user clicks on "add quiz question, a new question form will appear for user to add a question"
+//When the user clicks on "add quiz question", a new question form will appear for user to add a question"
 $(document).ready(function() {
   $('#new-question').click(function() {
     event.preventDefault();
@@ -51,11 +49,11 @@ $(document).ready(function() {
 //When the user clicks on submit quiz, data array created with the questions and answers they added
 $(document).ready(function() {
   $('#submit-quiz').click(function(event) {
-    console.log(event)
+    $('#submitted-quiz').slideDown(("slow", () => {}))
     event.preventDefault()
 
     const results = $('.added-questions').serializeArray();
-    console.log(results)
+
 
     $.post(
       '/quiz/create/questions',
@@ -65,4 +63,4 @@ $(document).ready(function() {
       }
     )
   })
-})
+});
