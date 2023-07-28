@@ -5,10 +5,12 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
+const path = require('path');
 const cookieSession = require('cookie-session');
 const PORT = process.env.PORT || 8080;
 const app = express();
 
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -35,22 +37,21 @@ app.use(express.static('public'));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-// const userApiRoutes = require('./routes/users-api');
-// const widgetApiRoutes = require('./routes/widgets-api');
-// const usersRoutes = require('./routes/users');
-
-//Project added routes
+const userApiRoutes = require('./routes/users-api');
+const widgetApiRoutes = require('./routes/widgets-api');
+const usersRoutes = require('./routes/users');
+const homeRoutes = require('./routes/home');
+const quizRoutes = require('./routes/quizzes');
+//These are the routes that I (Matt Yu) Set up in the file
 const createQuiz = require('./routes/createQuiz')
-const createQuizQuestions = require('./routes/createQuizQuestions')
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
-// app.use('/api/users', userApiRoutes);
-// app.use('/api/widgets', widgetApiRoutes);
-// app.use('/users', usersRoutes);
-app.use('/quiz', createQuiz);
-app.use('/quiz/create', createQuizQuestions);
+app.use('/api/users', userApiRoutes);
+app.use('/api/widgets', widgetApiRoutes);
+app.use('/users', usersRoutes);
+app.use('/quiz', createQuiz)
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -60,6 +61,10 @@ app.use('/quiz/create', createQuizQuestions);
 app.get('/', (req, res) => {
   res.render('index');
 });
+// app.get('login/:user_id', (req, res) => {
+//   req.cookies.user_id = req.params.user_id;
+//   res.redirect('/home');
+// });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

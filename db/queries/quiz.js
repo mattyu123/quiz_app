@@ -1,6 +1,6 @@
 const { query } = require('express');
 const db = require('../connection');
-const { Pool } = require('pg');
+const { Pool } = require('pg');z
 
 //function that will import the quiz information to the database
 const insertQuiz = function(quiz) {
