@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
   <link rel="stylesheet" href="/styles/createQuiz.css"/>
+  <link rel="stylesheet" href="/styles/styles.css">
 
   <!--Install external scripts required-->
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
@@ -31,5 +32,34 @@
   <section id="user-created-questions">
     <button id="submit-quiz" type="submit">Submit Quiz</button>
   </section>
+  <nav id="navigation-bar">
+    <span>QUIZZLY</span>
+    <span>Your Quizzes</span>
+  </nav>
+  <h1 id="intro-line">
+    Hi Peter!
+  </h1>
+  <div class="make-quiz-header">
+    <!-- ... (existing form code) ... -->
+  </div>
+
+  <!-- Provided form and script for sharing the URL -->
+  <form id="copyURLForm">
+    <input type="hidden" id="shareURL" value="<%= shareURL %>">
+    <button type="button" id="copyButton">Copy URL</button>
+  </form>
+
+  <script>
+    // Function to copy the URL to clipboard
+    function copyURLToClipboard() {
+      const urlInput = document.getElementById('shareURL');
+      urlInput.select();
+      document.execCommand('copy');
+      alert('URL copied to clipboard!');
+    }
+
+    // Attach event listener to the Copy URL button
+    document.getElementById('copyButton').addEventListener('click', copyURLToClipboard);
+  </script>
 </body>
 </html>

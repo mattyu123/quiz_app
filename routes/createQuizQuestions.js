@@ -4,7 +4,11 @@ const database  = require('../db/queries/quiz.js');
 
 //after the user clicks on the create quiz button, render user so they can add questions
 router.get('/questions', (req, res)=> {
-  res.render('quizQuestions')
+  const quizId = req.query.quizId;
+  // Construct the shareURL based on the quizId.
+  const shareURL = `${req.protocol}://${req.get('host')}/quiz/${quizId}`;
+
+  res.render('quizQuestions', { shareURL });
 })
 
 //Set this route so the server has access to the data

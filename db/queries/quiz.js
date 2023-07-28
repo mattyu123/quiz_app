@@ -1,6 +1,7 @@
 const { query } = require('express');
 const db = require('../connection');
-const { Pool } = require('pg');z
+const { Pool } = require('pg');
+const { v4: uuidv4 } = require('uuid');
 
 //function that will import the quiz information to the database
 const insertQuiz = function(quiz) {
@@ -9,22 +10,23 @@ const insertQuiz = function(quiz) {
   const quizTitle = quiz.title
   const quizDescription = quiz.description
   const isPrivate = quiz.private !== undefined ? quiz.private: false
+  const quizUrl = uuidv4(); // Generate a unique URL for the quiz
 
   const queryCode =
   `
-  INSERT INTO quizzes (user_id, name, description, is_private)
-  VALUES ($1, $2, $3, $4)
+  INSERT INTO quizzes (user_id, name, description, is_private,url)
+  VALUES ($1, $2, $3, $4, $5)
   RETURNING *;
   `
 
   return db
-    .query(queryCode, [user_id, quizTitle, quizDescription, isPrivate])
+    .query(queryCode, [user_id, quizTitle, quizDescription, isPrivate,quizUrl])
     .then(res => {
       return res.rows[0];
     })
-    .catch(err => {
-      console.log("There is an error", err)
-    })
+    // .catch(err => {
+    //   console.log("There is an error", err)
+    // })
   }
 
 //pull the last quiz ID as that would be the quiz that was just submitted
@@ -42,9 +44,9 @@ const pullLastQuizID = function() {
     .then(res => {
       return res.rows[0];
     })
-    .catch(err => {
-      console.log("There is an error", err)
-    })
+    // .catch(err => {
+    //   console.log("There is an error", err)
+    // })
   }
 
 const insertQuestionAnswers = function(questions, quizID) {
@@ -70,9 +72,9 @@ const insertQuestionAnswers = function(questions, quizID) {
     .then(res => {
       return res.rows[0];
     })
-    .catch(err => {
-      console.log("There is an error", err)
-    })
+    // .catch(err => {
+    //   console.log("There is an error", err)
+    // })
 }
 
 module.exports = { insertQuiz, pullLastQuizID, insertQuestionAnswers };

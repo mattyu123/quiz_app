@@ -24,12 +24,14 @@ router.post('/create', (req, res) => {
   //run the insertQuiz function on the database object
   database
     .insertQuiz(newObj)
-    .then(() => {
-      res.send()
+    .then((quizData) => {
+      const shareURL = req.protocol + '://' + req.get('host') + '/quiz/' + quizData.url;
+      res.render('createQuiz', { shareURL });
     })
-    .catch((error) => {
-      console.log(error)
-    });
+    // .catch((error) => {
+    //   console.log(error);
+    //   res.status(500).json({ error: 'Failed to create the quiz.' });
+    // });
 })
 
 module.exports = router;
